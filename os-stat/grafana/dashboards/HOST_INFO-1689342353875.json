@@ -108,7 +108,7 @@
             "uid": "PEB814BE3CA3B78C0"
           },
           "editorMode": "code",
-          "expr": "100 - ((node_filesystem_avail_bytes{} * 100) /            node_filesystem_size_bytes{})",
+          "expr": "100 - (100 * ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\"} )  / (node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\"}) ))",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -308,7 +308,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 38,
   "style": "dark",
   "tags": [],
@@ -316,8 +316,8 @@
     "list": []
   },
   "time": {
-    "from": "2023-07-14T12:57:43.776Z",
-    "to": "2023-07-14T13:08:04.221Z"
+    "from": "now-30m",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
